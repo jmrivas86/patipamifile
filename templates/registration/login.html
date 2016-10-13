@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+{% block header_text %}Login{% endblock %}
+
+{% block aside %}
+  <!-- Left side column. contains the logo and sidebar -->
+  <aside class="main-sidebar">
+
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar Menu -->
+      <ul class="sidebar-menu">
+      </ul>
+      <!-- /.sidebar-menu -->
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+{% endblock %}
+{% block contentheader %}
+{% endblock %}
+{% block content %}
+<div class="login-box">
+  <div class="login-logo">
+    <a href="#"><b>Login</b></a>
+  </div>
+  <!-- /.login-logo -->
+  <div class="login-box-body">
+    <p class="login-box-msg">Sign in to start your session</p>
+
+    <form action="." method="POST">
+      {% csrf_token %}
+      <div class="form-group has-feedback">
+        <input id="id_username" maxlength="254" name="username" type="text" class="form-control" placeholder="username" required="">
+      </div>
+      <div class="form-group has-feedback">
+        <input id="id_password" name="password" type="password" class="form-control" placeholder="Password" required="">
+      </div>
+      <div class="bg-danger">
+        {% for error in form.non_field_errors %}
+          <p>{{error}}</p>
+        {% endfor %}
+      </div>
+
+      <div class="row">
+        <!-- /.col -->
+        <div class="col-xs-12">
+          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+        </div>
+        <!-- /.col -->
+      </div>
+    </form>
+
+  </div>
+  <!-- /.login-box-body -->
+</div>
+{% endblock %}
